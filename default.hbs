@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
 
     {{#is "home"}}
-        {{#if @site.cover_image}}
-            <link rel="preload" as="image" href="{{@site.cover_image}}">
-        {{/if}}
+    {{#if @site.cover_image}}
+    <link rel="preload" as="image" href="{{@site.cover_image}}">
+    {{/if}}
     {{/is}}
 
     <style>
@@ -36,36 +36,36 @@
     {{ghost_head}}
 </head>
 
-<body class="{{body_class}}{{{block "body_class"}}} is-font-sans{{#match @custom.typography "Narrow"}} is-font-narrow{{/match}}">
-<div class="gh-site">
+<body class="{{body_class}}{{{block "body_class"}}} is-font-sans{{#match @custom.typography "Narrow"}} is-font-narrow{{/match}}" data-background-color="{{@custom.background_color}}">
+    <div class="gh-site">
 
-    {{#is "home"}}
+        {{#is "home"}}
         {{#if @site.cover_image}}
-            {{> "components/navbar" navigationLayout=@custom.navigation_layout fullWidth=true isTransparent=true}}
+        {{> "components/navbar" navigationLayout=@custom.navigation_layout fullWidth=true isTransparent=true}}
         {{else}}
-            {{> "components/navbar" navigationLayout=@custom.navigation_layout}}
+        {{> "components/navbar" navigationLayout=@custom.navigation_layout}}
         {{/if}}
-    {{else}}
+        {{else}}
         {{#if @site.cover_image}}
-            {{> "components/navbar" navigationLayout=@custom.navigation_layout fullWidth=true}}
+        {{> "components/navbar" navigationLayout=@custom.navigation_layout fullWidth=true}}
         {{else}}
-            {{> "components/navbar" navigationLayout=@custom.navigation_layout}}
+        {{> "components/navbar" navigationLayout=@custom.navigation_layout}}
         {{/if}}
+        {{/is}}
+
+        {{{body}}}
+
+        {{> components/footer footerText=@custom.footer_text}}
+
+    </div>
+
+    {{#is "post, page"}}
+    {{> "pswp"}}
     {{/is}}
 
-    {{{body}}}
+    <script src="{{asset "built/main.min.js"}}"></script>
 
-    {{> components/footer footerText=@custom.footer_text}}
-
-</div>
-
-{{#is "post, page"}}
-    {{> "pswp"}}
-{{/is}}
-
-<script src="{{asset "built/main.min.js"}}"></script>
-
-{{ghost_foot}}
+    {{ghost_foot}}
 
 </body>
 

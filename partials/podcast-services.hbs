@@ -1,23 +1,44 @@
 <div class="gh-podcast-service-list gh-outer">
     {{#if @custom.apple_podcasts_link}}
-        <a href="{{@custom.apple_podcasts_link}}" target="_blank" rel="noopener noreferrer">
-            {{> "icons/apple"}}
-            <span>Listen on</span>
-            <span>Apple Podcasts</span>
-        </a>
+    <a href="{{@custom.apple_podcasts_link}}" target="_blank" rel="noopener noreferrer">
+        {{> "icons/apple"}}
+        <span>Listen on</span>
+        <span>Apple Podcasts</span>
+    </a>
     {{/if}}
     {{#if @custom.spotify_link}}
-        <a href="{{@custom.spotify_link}}" target="_blank" rel="noopener noreferrer">
-            {{> "icons/spotify"}}
-            <span>Listen on</span>
-            <span>Spotify</span>
-        </a>
+    <a href="{{@custom.spotify_link}}" target="_blank" rel="noopener noreferrer">
+        {{> "icons/spotify"}}
+        <span>Listen on</span>
+        <span>Spotify</span>
+    </a>
     {{/if}}
     {{#if @custom.youtube_music_link}}
-        <a href="{{@custom.youtube_music_link}}" target="_blank" rel="noopener noreferrer">
-            {{> "icons/youtube-music"}}
-            <span>Listen on</span>
-            <span>YouTube Music</span>
-        </a>
+    <a href="{{@custom.youtube_music_link}}" target="_blank" rel="noopener noreferrer">
+        {{> "icons/youtube-music"}}
+        <span>Listen on</span>
+        <span>YouTube Music</span>
+    </a>
+    {{/if}}
+    {{#if @custom.amazon_music_link}}
+    <a href="{{@custom.amazon_music_link}}" target="_blank" rel="noopener noreferrer">
+        {{> "icons/amazon"}}
+        <span>Listen on</span>
+        <span>Amazon Music</span>
+    </a>
+    {{/if}}
+    {{#if @custom.overcast_link}}
+    <a href="{{@custom.overcast_link}}" target="_blank" rel="noopener noreferrer">
+        {{> "icons/overcast"}}
+        <span>Listen on</span>
+        <span>Overcast</span>
+    </a>
+    {{/if}}
+    {{#if @custom.pocketcasts_link}}
+    <a href="{{@custom.pocketcasts_link}}" target="_blank" rel="noopener noreferrer">
+        {{> "icons/pocketcasts"}}
+        <span>Listen on</span>
+        <span>Pocket Casts</span>
+    </a>
     {{/if}}
 </div>

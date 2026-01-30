@@ -9,10 +9,10 @@
 
         <div class="gh-header-content">
             {{#if primary}}
-                <h1 class="gh-header-primary">{{primary}}</h1>
+                <h1 class="gh-header-primary"{{#if @custom.primary_header_color}} style="color: {{@custom.primary_header_color}}"{{/if}}>{{primary}}</h1>
             {{/if}}
             {{#if secondary}}
-                <p class="gh-header-secondary">{{secondary}}</p>
+                <p class="gh-header-secondary"{{#if @custom.secondary_header_color}} style="color: {{@custom.secondary_header_color}}"{{/if}}>{{secondary}}</p>
             {{/if}}
             {{#match action "button"}}
                 <a class="gh-header-action gh-header-button gh-btn" href="#">Learn more</a>

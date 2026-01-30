@@ -1,16 +1,15 @@
 {
-    "name": "episode",
-    "description": "A Ghost theme",
-    "version": "1.0.0",
+    "name": "episode-lots",
+    "description": "Learning off the Syllable Ghost theme based on official Episode theme",
+    "version": "1.1.0",
     "private": true,
     "engines": {
         "ghost": ">=5.0.0"
     },
     "license": "MIT",
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "Reza Etezal",
+        "email": "reza@rezaetezal.com"
     },
     "keywords": [
         "ghost",
@@ -44,7 +43,10 @@
         "custom": {
             "typography": {
                 "type": "select",
-                "options": ["Wide", "Narrow"],
+                "options": [
+                    "Wide",
+                    "Narrow"
+                ],
                 "default": "Wide"
             },
             "background_color": {
@@ -53,8 +55,21 @@
             },
             "navigation_layout": {
                 "type": "select",
-                "options": ["Logo on the left", "Logo in the middle", "Stacked"],
+                "options": [
+                    "Logo on the left",
+                    "Logo in the middle",
+                    "Stacked"
+                ],
                 "default": "Logo on the left"
+            },
+            "mobile_logo": {
+                "type": "image",
+                "group": "homepage"
+            },
+            "mobile_logo_breakpoint": {
+                "type": "text",
+                "default": "767",
+                "group": "homepage"
             },
             "email_signup_text": {
                 "type": "text",
@@ -68,9 +83,19 @@
                 "default": "A weekly podcast about creativity, design, and building the things we love.",
                 "group": "homepage"
             },
+            "primary_header_color": {
+                "type": "color",
+                "default": "#07316f",
+                "group": "homepage"
+            },
             "secondary_header": {
                 "type": "text",
                 "default": "Subscribe below to never miss an episode.",
+                "group": "homepage"
+            },
+            "secondary_header_color": {
+                "type": "color",
+                "default": "#264573",
                 "group": "homepage"
             },
             "apple_podcasts_link": {
@@ -87,6 +112,21 @@
                 "type": "text",
                 "default": "https://music.youtube.com/",
                 "group": "homepage"
+            },
+            "amazon_music_link": {
+                "type": "text",
+                "default": "https://music.amazon.com/",
+                "group": "homepage"
+            },
+            "overcast_link": {
+                "type": "text",
+                "default": "https://overcast.fm/",
+                "group": "homepage"
+            },
+            "pocketcasts_link": {
+                "type": "text",
+                "default": "https://pocketcasts.com/",
+                "group": "homepage"
             }
         }
     },
@@ -96,7 +136,7 @@
         "zip": "gulp zip"
     },
     "devDependencies": {
-        "@tryghost/shared-theme-assets": "2.5.2",
+        "@tryghost/shared-theme-assets": "^2.5.2",
         "autoprefixer": "10.4.23",
         "beeper": "2.1.0",
         "cssnano": "7.1.2",

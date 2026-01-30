@@ -55,6 +55,18 @@ body {
     margin-top: -3px;
 }
 
+.gh-head-logo img {
+    display: block;
+    height: 32px;
+    width: auto;
+    max-width: 100%;
+}
+
+.gh-head-logo picture img {
+    opacity: 1 !important;
+    position: static !important;
+}
+
 .is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-head-logo {
     font-size: 2.8rem;
     font-variation-settings: "wdth" 80;
@@ -83,9 +95,29 @@ body {
     border: 0 !important;
 }
 
+#gh-head.is-head-transparent + .gh-main .gh-header.has-background-image {
+    padding-top: 56px;
+}
+
+@media (max-width: 767px) {
+    #gh-head.is-head-transparent + .gh-main .gh-header.has-background-image {
+        padding-top: 72px;
+    }
+}
+
+.gh-header-image {
+    position: static !important;
+    width: 100%;
+    height: auto !important;
+    max-width: var(--container-width, 960px);
+    max-height: none;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
 .gh-header.has-background-image {
-    min-height: var(--header-height, calc(100vh - var(--services-height, 177px)));
-    padding-bottom: clamp(3.2rem, 3.64vw + 1.75rem, 6.4rem);
+    min-height: unset;
+    padding-bottom: 32px;
 }
 
 .gh-header.has-background-image::before {
@@ -126,6 +158,10 @@ body {
         aspect-ratio: 1;
     }
 
+    .gh-header-image {
+        max-height: 60vh;
+    }
+
     .gh-header-primary {
         font-size: calc(2.8rem*var(--font-multiplier, 1));
     }
@@ -151,6 +187,9 @@ body {
     justify-content: center;
     padding: 64px 0;
     background-color: #15171a;
+    position: static !important;
+    transform: none !important;
+    margin-top: 0 !important;
 }
 
 .gh-podcast-service-list a {
