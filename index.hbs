@@ -5,8 +5,88 @@
         <div class="gh-archive-inner gh-inner">
             <header class="gh-archive-header">
                 <h1 class="gh-archive-title">All episodes</h1>
+                <div class="gh-archive-controls">
+                    <input type="text" id="episode-search" class="gh-search-input" placeholder="Search episodes...">
+                    <div class="gh-sort-controls">
+                        <label for="sort-order">Sort by date:</label>
+                        <button id="sort-toggle" class="gh-sort-button" data-order="desc">
+                            <span class="sort-text">Newest First</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </div>
             </header>
         </div>
     </section>
     {{> "components/list" layout="simple" count="all" showExcerpt=true showPublishedAt=true}}
 </main>
+
+<script>
+(function() {
+    const searchInput = document.getElementById('episode-search');
+    const sortButton = document.getElementById('sort-toggle');
+    const listContainer = document.querySelector('.gh-list-feed');
+    
+    if (!listContainer) return;
+    
+    let currentOrder = 'desc';
+    
+    // Search functionality
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = listContainer.querySelectorAll('.gh-list-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.gh-list-item-title');
+                if (title && title.textContent.toLowerCase().includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+    
+    // Sort functionality
+    if (sortButton) {
+        sortButton.addEventListener('click', function() {
+            currentOrder = currentOrder === 'desc' ? 'asc' : 'desc';
+            
+            const items = Array.from(listContainer.querySelectorAll('.gh-list-item'));
+            
+            items.sort((a, b) => {
+                const dateA = a.querySelector('.gh-list-item-published-at');
+                const dateB = b.querySelector('.gh-list-item-published-at');
+                
+                if (!dateA || !dateB) return 0;
+                
+                const timeA = new Date(dateA.textContent).getTime();
+                const timeB = new Date(dateB.textContent).getTime();
+                
+                return currentOrder === 'desc' ? timeB - timeA : timeA - timeB;
+            });
+            
+            // Clear and re-append in sorted order
+            listContainer.innerHTML = '';
+            const fragment = document.createDocumentFragment();
+            items.forEach(item => fragment.appendChild(item));
+            listContainer.appendChild(fragment);
+            
+            // Update button text and icon
+            const sortText = sortButton.querySelector('.sort-text');
+            const icon = sortButton.querySelector('svg');
+            
+            if (currentOrder === 'asc') {
+                sortText.textContent = 'Oldest First';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                sortText.textContent = 'Newest First';
+                icon.style.transform = 'rotate(0deg)';
+            }
+            
+            sortButton.setAttribute('data-order', currentOrder);
+        });
+    }
+})();
+</script>

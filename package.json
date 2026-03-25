@@ -127,6 +127,14 @@
                 "type": "text",
                 "default": "https://pocketcasts.com/",
                 "group": "homepage"
+            },
+            "linkedin_url": {
+                "type": "text",
+                "description": "LinkedIn profile URL to display on article pages"
+            },
+            "instagram_url": {
+                "type": "text",
+                "description": "Instagram profile URL to display on article pages"
             }
         }
     },
