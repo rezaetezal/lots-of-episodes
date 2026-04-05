@@ -27,7 +27,9 @@ body {
     background-color: var(--background-color);
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) {
     font-stretch: normal;
 }
 
@@ -40,7 +42,10 @@ body {
     font-weight: 720;
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) :is(h1, h2, h3, h4, h5, h6) {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    :is(h1, h2, h3, h4, h5, h6) {
     font-stretch: normal;
     font-weight: 720;
 }
@@ -51,7 +56,10 @@ body {
     border-radius: 0;
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-btn {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-btn {
     --multiplier: 0.85;
 
     font-size: 1.9rem;
@@ -76,9 +84,42 @@ body {
     position: static !important;
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-head-logo {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-head-logo {
     font-size: 2.8rem;
     font-variation-settings: "wdth" 80;
+}
+
+/* Nav links - always black, Garet-Heavy */
+.gh-head-menu a,
+#gh-head.is-head-transparent .gh-head-menu a {
+    color: #000 !important;
+    font-weight: 800;
+}
+
+/* Mobile nav dropdown - always orange */
+@media (max-width: 767px) {
+    .is-head-open:not(.is-head-brand):not(.is-head-dark):not(
+            .is-head-transparent
+        )#gh-head {
+        background-color: var(--ghost-accent-color) !important;
+    }
+
+    .is-head-open#gh-head .gh-head-actions {
+        background-color: var(--ghost-accent-color) !important;
+    }
+
+    .is-head-open#gh-head :is(.gh-head-btn, .gh-head-link) {
+        color: #000 !important;
+        background-color: transparent !important;
+        border-color: #000 !important;
+    }
+
+    .is-head-open#gh-head .gh-head-btn.gh-primary-btn {
+        border: 2px solid #000 !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -130,7 +171,12 @@ body {
 }
 
 .gh-header.has-background-image::before {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent, rgba(0, 0, 0, 0.6));
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6),
+        transparent,
+        rgba(0, 0, 0, 0.6)
+    );
     opacity: 0.3;
 }
 
@@ -149,11 +195,16 @@ body {
 }
 
 .gh-header-primary {
-    font-size: calc(clamp(3rem, 5.4vh + 1.2rem, 7.2rem) * var(--font-multiplier, 1));
+    font-size: calc(
+        clamp(3rem, 5.4vh + 1.2rem, 7.2rem) * var(--font-multiplier, 1)
+    );
     line-height: 1.1;
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-header-primary {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-header-primary {
     --font-multiplier: 1.3;
 
     font-weight: 600;
@@ -172,7 +223,7 @@ body {
     }
 
     .gh-header-primary {
-        font-size: calc(2.8rem*var(--font-multiplier, 1));
+        font-size: calc(2.8rem * var(--font-multiplier, 1));
     }
 
     .gh-header-secondary {
@@ -184,7 +235,7 @@ body {
     }
 
     .gh-archive-title {
-        font-size: calc(2.2rem*var(--font-multiplier, 1));
+        font-size: calc(2.2rem * var(--font-multiplier, 1));
     }
 }
 
@@ -259,7 +310,10 @@ body {
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-list-item-inner {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-list-item-inner {
     border-width: 2px;
 }
 
@@ -291,7 +345,10 @@ body {
     font-weight: 800;
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-list-item-title {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-list-item-title {
     --font-multiplier: 1.3;
 
     font-weight: 650;
@@ -330,7 +387,10 @@ body {
     background-color: var(--ghost-accent-color);
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-list-item-content::after {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-list-item-content::after {
     font-size: 1.8rem;
     font-variation-settings: "wdth" 80;
 }
@@ -364,7 +424,10 @@ body {
     --font-multiplier: 1.3;
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-cta-title {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-cta-title {
     --font-multiplier: 1.6;
 
     font-weight: 600;
@@ -382,7 +445,11 @@ body {
     border-radius: 0;
 }
 
-.is-font-narrow:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]):not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-cta-input span {
+.is-font-narrow:not([class*=" gh-font-heading"]):not(
+        [class^="gh-font-heading"]
+    ):not([class*=" gh-font-body"]):not([class^="gh-font-body"])
+    .gh-cta-input
+    span {
     font-size: 1.8rem;
     font-variation-settings: "wdth" 80;
 }
@@ -514,8 +581,9 @@ body {
 
 .gh-article-social {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
+    align-items: center;
 }
 
 .gh-article-social-label {
@@ -527,25 +595,27 @@ body {
 .gh-article-social-button {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #fff;
-    background-color: var(--ghost-accent-color);
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    padding: 0;
+    background: none;
+    border: none;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
 }
 
 .gh-article-social-button:hover {
-    background-color: var(--color-darker-gray);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0.8;
 }
 
-.gh-article-social-button svg {
-    width: 18px;
-    height: 18px;
+.gh-article-social-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.gh-article-social-mobile {
+    display: none;
 }
 
 @media (max-width: 767px) {
@@ -565,5 +635,19 @@ body {
     .gh-article-social-link {
         width: 36px;
         height: 36px;
+    }
+
+    .gh-article-social-sidebar {
+        display: none;
+    }
+
+    .gh-article-social-mobile {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 2px solid var(--color-border);
     }
 }

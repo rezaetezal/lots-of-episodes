@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{meta_title}}</title>
+    <title>{{#is "index"}}All Episodes — {{@site.title}}{{else}}{{meta_title}}{{/is}}</title>
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
 
     {{#is "home"}}
@@ -41,9 +41,9 @@
 
         {{#is "home"}}
         {{#if @site.cover_image}}
-        {{> "components/navbar" navigationLayout=@custom.navigation_layout fullWidth=true isTransparent=true}}
+        {{> "components/navbar" navigationLayout=@custom.navigation_layout fullWidth=true isTransparent=true isHome=true}}
         {{else}}
-        {{> "components/navbar" navigationLayout=@custom.navigation_layout}}
+        {{> "components/navbar" navigationLayout=@custom.navigation_layout isHome=true}}
         {{/if}}
         {{else}}
         {{#if @site.cover_image}}

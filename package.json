@@ -1,163 +1,164 @@
 {
-    "name": "episode-lots",
-    "description": "Learning off the Syllable Ghost theme based on official Episode theme",
-    "version": "1.1.0",
-    "private": true,
-    "engines": {
-        "ghost": ">=5.0.0"
+  "name": "episode-lots",
+  "description": "Learning off the Syllable Ghost theme based on official Episode theme",
+  "version": "1.1.0",
+  "private": true,
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Reza Etezal",
+    "email": "reza@rezaetezal.com"
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme"
+  ],
+  "docs": "https://episode.ghost.io/about/",
+  "config": {
+    "posts_per_page": 3,
+    "image_sizes": {
+      "xs": {
+        "width": 150
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 720
+      },
+      "l": {
+        "width": 960
+      },
+      "xl": {
+        "width": 1200
+      },
+      "xxl": {
+        "width": 2000
+      }
     },
-    "license": "MIT",
-    "author": {
-        "name": "Reza Etezal",
-        "email": "reza@rezaetezal.com"
-    },
-    "keywords": [
-        "ghost",
-        "theme",
-        "ghost-theme"
-    ],
-    "docs": "https://episode.ghost.io/about/",
-    "config": {
-        "posts_per_page": 3,
-        "image_sizes": {
-            "xs": {
-                "width": 150
-            },
-            "s": {
-                "width": 300
-            },
-            "m": {
-                "width": 720
-            },
-            "l": {
-                "width": 960
-            },
-            "xl": {
-                "width": 1200
-            },
-            "xxl": {
-                "width": 2000
-            }
-        },
-        "card_assets": true,
-        "custom": {
-            "typography": {
-                "type": "select",
-                "options": [
-                    "Wide",
-                    "Narrow"
-                ],
-                "default": "Wide"
-            },
-            "background_color": {
-                "type": "color",
-                "default": "#ebebeb"
-            },
-            "navigation_layout": {
-                "type": "select",
-                "options": [
-                    "Logo on the left",
-                    "Logo in the middle",
-                    "Stacked"
-                ],
-                "default": "Logo on the left"
-            },
-            "mobile_logo": {
-                "type": "image",
-                "group": "homepage"
-            },
-            "mobile_logo_breakpoint": {
-                "type": "text",
-                "default": "767",
-                "group": "homepage"
-            },
-            "email_signup_text": {
-                "type": "text",
-                "default": "Get the latest episodes directly in your inbox"
-            },
-            "footer_text": {
-                "type": "text"
-            },
-            "primary_header": {
-                "type": "text",
-                "default": "A weekly podcast about creativity, design, and building the things we love.",
-                "group": "homepage"
-            },
-            "primary_header_color": {
-                "type": "color",
-                "default": "#07316f",
-                "group": "homepage"
-            },
-            "secondary_header": {
-                "type": "text",
-                "default": "Subscribe below to never miss an episode.",
-                "group": "homepage"
-            },
-            "secondary_header_color": {
-                "type": "color",
-                "default": "#264573",
-                "group": "homepage"
-            },
-            "apple_podcasts_link": {
-                "type": "text",
-                "default": "https://podcasts.apple.com/",
-                "group": "homepage"
-            },
-            "spotify_link": {
-                "type": "text",
-                "default": "https://open.spotify.com/",
-                "group": "homepage"
-            },
-            "youtube_music_link": {
-                "type": "text",
-                "default": "https://music.youtube.com/",
-                "group": "homepage"
-            },
-            "amazon_music_link": {
-                "type": "text",
-                "default": "https://music.amazon.com/",
-                "group": "homepage"
-            },
-            "overcast_link": {
-                "type": "text",
-                "default": "https://overcast.fm/",
-                "group": "homepage"
-            },
-            "pocketcasts_link": {
-                "type": "text",
-                "default": "https://pocketcasts.com/",
-                "group": "homepage"
-            },
-            "linkedin_url": {
-                "type": "text",
-                "description": "LinkedIn profile URL to display on article pages"
-            },
-            "instagram_url": {
-                "type": "text",
-                "description": "Instagram profile URL to display on article pages"
-            }
-        }
-    },
-    "scripts": {
-        "dev": "gulp",
-        "test": "gscan .",
-        "zip": "gulp zip"
-    },
-    "devDependencies": {
-        "@tryghost/shared-theme-assets": "^2.5.2",
-        "autoprefixer": "10.4.23",
-        "beeper": "2.1.0",
-        "cssnano": "7.1.2",
-        "gscan": "5.2.2",
-        "gulp": "5.0.1",
-        "gulp-concat": "2.6.1",
-        "gulp-livereload": "4.0.2",
-        "gulp-postcss": "10.0.0",
-        "gulp-uglify": "3.0.2",
-        "gulp-zip": "5.1.0",
-        "ordered-read-streams": "2.0.0",
-        "postcss": "8.5.6",
-        "postcss-easy-import": "4.0.0",
-        "pump": "3.0.3"
+    "card_assets": true,
+    "custom": {
+      "typography": {
+        "type": "select",
+        "options": [
+          "Wide",
+          "Narrow"
+        ],
+        "default": "Wide"
+      },
+      "background_color": {
+        "type": "color",
+        "default": "#ebebeb"
+      },
+      "navigation_layout": {
+        "type": "select",
+        "options": [
+          "Logo on the left",
+          "Logo in the middle",
+          "Stacked"
+        ],
+        "default": "Logo on the left"
+      },
+      "mobile_logo": {
+        "type": "image",
+        "group": "homepage"
+      },
+      "mobile_logo_breakpoint": {
+        "type": "text",
+        "default": "767",
+        "group": "homepage"
+      },
+      "email_signup_text": {
+        "type": "text",
+        "default": "Get the latest episodes directly in your inbox"
+      },
+      "footer_text": {
+        "type": "text"
+      },
+      "primary_header": {
+        "type": "text",
+        "default": "A weekly podcast about creativity, design, and building the things we love.",
+        "group": "homepage"
+      },
+      "primary_header_color": {
+        "type": "color",
+        "default": "#07316f",
+        "group": "homepage"
+      },
+      "secondary_header": {
+        "type": "text",
+        "default": "Subscribe below to never miss an episode.",
+        "group": "homepage"
+      },
+      "secondary_header_color": {
+        "type": "color",
+        "default": "#264573",
+        "group": "homepage"
+      },
+      "apple_podcasts_link": {
+        "type": "text",
+        "default": "https://podcasts.apple.com/",
+        "group": "homepage"
+      },
+      "spotify_link": {
+        "type": "text",
+        "default": "https://open.spotify.com/",
+        "group": "homepage"
+      },
+      "youtube_music_link": {
+        "type": "text",
+        "default": "https://music.youtube.com/",
+        "group": "homepage"
+      },
+      "amazon_music_link": {
+        "type": "text",
+        "default": "https://music.amazon.com/",
+        "group": "homepage"
+      },
+      "overcast_link": {
+        "type": "text",
+        "default": "https://overcast.fm/",
+        "group": "homepage"
+      },
+      "pocketcasts_link": {
+        "type": "text",
+        "default": "https://pocketcasts.com/",
+        "group": "homepage"
+      },
+      "linkedin_url": {
+        "type": "text",
+        "description": "LinkedIn profile URL to display on article pages"
+      },
+      "instagram_url": {
+        "type": "text",
+        "description": "Instagram profile URL to display on article pages"
+      }
     }
+  },
+  "scripts": {
+    "dev": "gulp",
+    "test": "gscan .",
+    "zip": "gulp zip",
+    "upload": "bin/upload_theme"
+  },
+  "devDependencies": {
+    "@tryghost/shared-theme-assets": "^2.5.2",
+    "autoprefixer": "10.4.23",
+    "beeper": "2.1.0",
+    "cssnano": "7.1.2",
+    "gscan": "5.2.2",
+    "gulp": "5.0.1",
+    "gulp-concat": "2.6.1",
+    "gulp-livereload": "4.0.2",
+    "gulp-postcss": "10.0.0",
+    "gulp-uglify": "3.0.2",
+    "gulp-zip": "5.1.0",
+    "ordered-read-streams": "2.0.0",
+    "postcss": "8.5.6",
+    "postcss-easy-import": "4.0.0",
+    "pump": "3.0.3"
+  }
 }
