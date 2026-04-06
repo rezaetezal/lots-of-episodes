@@ -2,6 +2,7 @@
   "name": "episode-lots",
   "description": "Learning off the Syllable Ghost theme based on official Episode theme",
   "version": "1.1.0",
+  "packageManager": "yarn@4.0.0",
   "private": true,
   "engines": {
     "ghost": ">=5.0.0"
@@ -139,10 +140,11 @@
     }
   },
   "scripts": {
+    "preinstall": "node -e \"if (!process.env.npm_config_user_agent || !process.env.npm_config_user_agent.includes('yarn')) { console.error('Please use Yarn (yarn install) for this repo.'); process.exit(1); }\"",
     "dev": "gulp",
     "test": "gscan .",
     "zip": "gulp zip",
-    "upload": "bin/upload_theme"
+    "upload": "ruby bin/upload_theme"
   },
   "devDependencies": {
     "@tryghost/shared-theme-assets": "^2.5.2",

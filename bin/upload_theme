@@ -1,34 +1,71 @@
-#!/usr/bin/env -S mise x ruby -- ruby
+#!/usr/bin/env ruby
 
-require 'httparty'
-require 'jwt'
-require 'io/console'
+require 'json'
+require 'net/http'
+require 'openssl'
+require 'securerandom'
+require 'uri'
 
-ghost_admin_api_key = ENV["GHOST_ADMIN_API_KEY"]
-raise "GHOST_ADMIN_API_KEY not set" if ghost_admin_api_key.nil?
+ghost_admin_api_key = ENV['GHOST_ADMIN_API_KEY']
+raise 'GHOST_ADMIN_API_KEY not set' if ghost_admin_api_key.nil? || ghost_admin_api_key.strip.empty?
 
-# Split the key into ID and SECRET
-id, secret = ghost_admin_api_key.split(':')
+ghost_admin_api_url = ENV['GHOST_ADMIN_API_URL']
+ghost_admin_api_url = 'https://learningoffthesyllabus.com' if ghost_admin_api_url.nil? || ghost_admin_api_url.strip.empty?
 
-# Prepare header and payload
+zip_path = ENV['GHOST_THEME_ZIP']
+zip_path = 'dist/episode-lots.zip' if zip_path.nil? || zip_path.strip.empty?
+raise "Theme zip not found at #{zip_path}" unless File.exist?(zip_path)
+
+id, secret = ghost_admin_api_key.split(':', 2)
+raise 'GHOST_ADMIN_API_KEY must be in the format "{id}:{secret}"' if id.nil? || id.empty? || secret.nil? || secret.empty?
+
+def base64url(bytes)
+    [bytes].pack('m0').tr('+/', '-_').delete('=')
+end
+
 iat = Time.now.to_i
+header = { alg: 'HS256', typ: 'JWT', kid: id }
+payload = { iat: iat, exp: iat + 5 * 60, aud: '/admin/' }
 
-header = {alg: 'HS256', typ: 'JWT', kid: id}
-payload = {
-    iat: iat,
-    exp: iat + 5 * 60,
-    aud: '/admin/'
-}
+encoded_header = base64url(header.to_json)
+encoded_payload = base64url(payload.to_json)
+unsigned_token = "#{encoded_header}.#{encoded_payload}"
 
-# Create the token (including decoding secret)
-token = JWT.encode payload, [secret].pack('H*'), 'HS256', header
+signing_key = [secret].pack('H*')
+signature = OpenSSL::HMAC.digest('sha256', signing_key, unsigned_token)
+token = "#{unsigned_token}.#{base64url(signature)}"
 
-# puts "\"Authorization: Ghost #{token}\""
+endpoint = URI.join(ghost_admin_api_url, '/ghost/api/admin/themes/upload')
+boundary = "----RubyMultipartPost#{SecureRandom.hex(16)}"
 
+file_bytes = File.binread(zip_path)
+filename = File.basename(zip_path)
 
-url = "https://learningoffthesyllabus.com/ghost/api/admin/themes/upload"
-headers = {"Authorization" => "Ghost #{token}"}
-body = {"file" => File.open("dist/episode-lots.zip")}
+preamble = +""
+preamble << "--#{boundary}\r\n"
+preamble << "Content-Disposition: form-data; name=\"file\"; filename=\"#{filename}\"\r\n"
+preamble << "Content-Type: application/zip\r\n"
+preamble << "\r\n"
 
-response = HTTParty.post(url, body: body, headers: headers)
-puts JSON.pretty_generate(response.parsed_response)
+epilogue = +"\r\n--#{boundary}--\r\n"
+
+http = Net::HTTP.new(endpoint.host, endpoint.port)
+http.use_ssl = endpoint.scheme == 'https'
+
+request = Net::HTTP::Post.new(endpoint.request_uri)
+request['Authorization'] = "Ghost #{token}"
+request['Content-Type'] = "multipart/form-data; boundary=#{boundary}"
+request.body = preamble.b
+request.body << file_bytes
+request.body << epilogue.b
+
+response = http.request(request)
+
+begin
+    parsed = JSON.parse(response.body)
+    puts JSON.pretty_generate(parsed)
+rescue JSON::ParserError
+    puts response.body
+end
+
+raise "Ghost upload failed (#{response.code})" unless response.is_a?(Net::HTTPSuccess)
